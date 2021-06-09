@@ -45,35 +45,42 @@ public class BusinessRulesEngine {
 		return null;
 	}
 
-	public void sendPhysicalProduct(Product product) {
+	public boolean sendPhysicalProduct(Product product) {
 		ProductOperations productOperations = getRuleEngine(product);
 		if (productOperations != null) {
 			double commissionPayment = productOperations.getCommissionPayment();
 			String shippmentDetails = productOperations.sendShipping();
 			logger.info("Physical Product :::::::[product={}, commissionPayment={}, shippmentDetails={}]", product,
 					commissionPayment, shippmentDetails);
+			return true;
 		}
+		return false;
 	}
 
-	public void sendPhysicalBook(Product product) {
+	public boolean sendPhysicalBook(Product product) {
 		BookRuleEngine bookRuleEngine = getRuleEngine(product);
 		if (bookRuleEngine != null) {
 			double commissionPayment = bookRuleEngine.getCommissionPayment();
 			String royaltyDepartment = bookRuleEngine.sendRoyaltyDepartment();
 			logger.info("Book Product :::::::[product={}, commissionPayment={}, royaltyDepartment={}]", product,
 					commissionPayment, royaltyDepartment);
+			return true;
 		}
+		return false;
 	}
 
-	public void sendVideo(Product product) {
+	public boolean sendVideo(Product product) {
 		VideoRuleEngine videoRuleEngine = getRuleEngine(product);
 		if (videoRuleEngine != null) {
 			String learningToSki = videoRuleEngine.LearningToSki();
 			logger.info("Video Product :::::::[product={}, learningToSki={}]", product, learningToSki);
+			return true;
 		}
+		return false;
 	}
 
-	public void sendMember(Product product, boolean isActive, boolean upgrade) {
+	public boolean sendMember(Product product, boolean isActive, boolean upgrade) {
+
 		MemberRuleEngine memberRuleEngine = getRuleEngine(product);
 		if (memberRuleEngine != null) {
 			if (isActive) {
@@ -89,7 +96,10 @@ public class BusinessRulesEngine {
 			boolean isEmailSend = memberRuleEngine.sendEmail();
 			logger.info("Member activated/upgraded email send :::::::[member={}, isEmailSend={}]", product,
 					isEmailSend);
+			return true;
 		}
+
+		return false;
 	}
 
 }
