@@ -46,8 +46,9 @@ public class BusinessRulesEngine {
 	}
 
 	public boolean sendPhysicalProduct(Product product) {
-		ProductOperations productOperations = getRuleEngine(product);
-		if (productOperations != null) {
+		Object obj = getRuleEngine(product);
+		if (obj != null && obj instanceof ProductOperations) {
+			ProductOperations productOperations = (ProductOperations) obj;
 			double commissionPayment = productOperations.getCommissionPayment();
 			String shippmentDetails = productOperations.sendShipping();
 			logger.info("Physical Product :::::::[product={}, commissionPayment={}, shippmentDetails={}]", product,
@@ -58,8 +59,9 @@ public class BusinessRulesEngine {
 	}
 
 	public boolean sendPhysicalBook(Product product) {
-		BookRuleEngine bookRuleEngine = getRuleEngine(product);
-		if (bookRuleEngine != null) {
+		Object obj = getRuleEngine(product);
+		if (obj != null && obj instanceof BookRuleEngine) {
+			BookRuleEngine bookRuleEngine = (BookRuleEngine) obj;
 			double commissionPayment = bookRuleEngine.getCommissionPayment();
 			String royaltyDepartment = bookRuleEngine.sendRoyaltyDepartment();
 			logger.info("Book Product :::::::[product={}, commissionPayment={}, royaltyDepartment={}]", product,
@@ -70,8 +72,9 @@ public class BusinessRulesEngine {
 	}
 
 	public boolean sendVideo(Product product) {
-		VideoRuleEngine videoRuleEngine = getRuleEngine(product);
-		if (videoRuleEngine != null) {
+		Object obj = getRuleEngine(product);
+		if (obj != null && obj instanceof VideoRuleEngine) {
+			VideoRuleEngine videoRuleEngine = (VideoRuleEngine) obj;
 			String learningToSki = videoRuleEngine.LearningToSki();
 			logger.info("Video Product :::::::[product={}, learningToSki={}]", product, learningToSki);
 			return true;
@@ -80,9 +83,9 @@ public class BusinessRulesEngine {
 	}
 
 	public boolean sendMember(Product product, boolean isActive, boolean upgrade) {
-
-		MemberRuleEngine memberRuleEngine = getRuleEngine(product);
-		if (memberRuleEngine != null) {
+		Object obj = getRuleEngine(product);
+		if (obj != null && obj instanceof MemberRuleEngine) {
+			MemberRuleEngine memberRuleEngine = (MemberRuleEngine) obj;
 			if (isActive) {
 				boolean activated = memberRuleEngine.activate();
 				logger.info("Member :::::::[member={}, activated={}]", product, activated);

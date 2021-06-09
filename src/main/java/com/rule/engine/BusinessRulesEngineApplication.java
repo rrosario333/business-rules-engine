@@ -16,6 +16,8 @@ public class BusinessRulesEngineApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BusinessRulesEngineApplication.class, args);
+		
+		logger.info(":::::::::::::::::::::::::::::Bussiness Rule Engine Started:::::::::::::::::::::::::::::::");
 
 		BusinessRulesEngine businessRulesEngine = new BusinessRulesEngine();
 		boolean memberCompleted = businessRulesEngine.sendMember(MEMBERSHIP, true, false);
@@ -26,6 +28,8 @@ public class BusinessRulesEngineApplication {
 		logger.info("Physical Product isCompleted [{}]", physicalProductCompleted);
 		boolean videoCompleted = businessRulesEngine.sendVideo(VIDEO);
 		logger.info("Video isCompleted [{}]", videoCompleted);
+		
+		logger.info(":::::::::::::::::::::::::::::Bussiness Rule Engine Completed:::::::::::::::::::::::::::::::");
 
 	}
 
