@@ -4,8 +4,8 @@ public interface MemberOperations {
 
 	boolean activate();
 
-	boolean upgrade();
-
 	boolean sendEmail();
+
+	boolean upgrade();
 
 }

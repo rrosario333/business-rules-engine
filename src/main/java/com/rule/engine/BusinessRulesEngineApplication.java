@@ -1,14 +1,14 @@
 package com.rule.engine;
 
+import static com.rule.engine.model.Product.BOOK;
+import static com.rule.engine.model.Product.MEMBERSHIP;
+import static com.rule.engine.model.Product.PHYSICAL_PRODUCT;
+import static com.rule.engine.model.Product.VIDEO;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import static com.rule.engine.model.Product.PHYSICAL_PRODUCT;
-import static com.rule.engine.model.Product.BOOK;
-import static com.rule.engine.model.Product.MEMBERSHIP;
-import static com.rule.engine.model.Product.VIDEO;
 
 @SpringBootApplication
 public class BusinessRulesEngineApplication {
