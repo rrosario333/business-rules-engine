@@ -4,12 +4,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.rule.engine.model.Product;
 import com.rule.engine.service.ProductOperations;
 import com.rule.engine.serviceImpl.BookRuleEngine;
 import com.rule.engine.serviceImpl.MemberRuleEngine;
 import com.rule.engine.serviceImpl.PysicalProductRuleEngine;
 import com.rule.engine.serviceImpl.VideoRuleEngine;
+import com.rule.engine.model.Product;
+
+import static com.rule.engine.model.Product.PHYSICAL_PRODUCT;
+import static com.rule.engine.model.Product.BOOK;
+import static com.rule.engine.model.Product.MEMBERSHIP;
+import static com.rule.engine.model.Product.VIDEO;
 
 @Component
 public class BusinessRulesEngine {
@@ -21,19 +26,19 @@ public class BusinessRulesEngine {
 			return null;
 		}
 
-		if (product.equals(Product.PHYSICAL_PRODUCT)) {
+		if (product.equals(PHYSICAL_PRODUCT)) {
 			return (T) new PysicalProductRuleEngine();
 		}
 
-		else if (product.equals(Product.BOOK)) {
+		else if (product.equals(BOOK)) {
 			return (T) new BookRuleEngine();
 		}
 
-		else if (product.equals(Product.VIDEO)) {
+		else if (product.equals(VIDEO)) {
 			return (T) new VideoRuleEngine();
 		}
 
-		else if (product.equals(Product.MEMBERSHIP)) {
+		else if (product.equals(MEMBERSHIP)) {
 			return (T) new MemberRuleEngine();
 		}
 
