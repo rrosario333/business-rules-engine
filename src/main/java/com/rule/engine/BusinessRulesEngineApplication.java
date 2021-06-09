@@ -3,7 +3,10 @@ package com.rule.engine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.rule.engine.model.Product;
+import static com.rule.engine.model.Product.PHYSICAL_PRODUCT;
+import static com.rule.engine.model.Product.BOOK;
+import static com.rule.engine.model.Product.MEMBERSHIP;
+import static com.rule.engine.model.Product.VIDEO;
 
 @SpringBootApplication
 public class BusinessRulesEngineApplication {
@@ -12,10 +15,10 @@ public class BusinessRulesEngineApplication {
 		SpringApplication.run(BusinessRulesEngineApplication.class, args);
 
 		BusinessRulesEngine businessRulesEngine = new BusinessRulesEngine();
-		businessRulesEngine.sendMember(Product.MEMBERSHIP, true, false);
-		businessRulesEngine.sendPhysicalBook(Product.BOOK);
-		businessRulesEngine.sendPhysicalProduct(Product.PHYSICAL_PRODUCT);
-		businessRulesEngine.sendVideo(Product.VIDEO);
+		businessRulesEngine.sendMember(MEMBERSHIP, true, false);
+		businessRulesEngine.sendPhysicalBook(BOOK);
+		businessRulesEngine.sendPhysicalProduct(PHYSICAL_PRODUCT);
+		businessRulesEngine.sendVideo(VIDEO);
 
 	}
 
